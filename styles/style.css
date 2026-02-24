@@ -785,25 +785,63 @@ footer {
 
 /* 반응형 */
 @media (max-width: 768px) {
-    .nav-links {
-        display: none;
+    /* 네비게이션 바: PC처럼 가로 배치 유지 */
+    nav {
+        padding: 10px 3%; 
     }
 
+    .nav-container {
+        gap: 10px;
+    }
+
+    .logo-img {
+        height: 32px; /* 로고 크기 줄임 */
+    }
+
+    .nav-links {
+        display: flex; /* 숨김 해제 */
+        gap: 12px;     /* 메뉴 간격 좁게 */
+    }
+
+    .nav-links a {
+        font-size: 13px;    /* 글자 크기 줄임 */
+        padding: 5px 0;
+        white-space: nowrap; /* 줄바꿈 방지 */
+    }
+
+    /* 히어로 섹션: 글자 크기 줄여서 깔끔하게 */
     .hero-content h1 {
-        font-size: 3rem;
+        font-size: 2.2rem;
+        word-break: keep-all;
     }
 
     .hero-content p {
-        font-size: 1.2rem;
+        font-size: 1rem;
+        padding: 0 5%;
+        margin-bottom: 25px;
     }
 
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+    }
+
+    /* 섹션 타이틀 정리 */
     .section-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        margin-bottom: 40px;
     }
 
+    /* 연락처: 모바일에서는 세로가 더 깔끔함 */
     .contact-links {
         flex-direction: column;
-        align-items: center;
+        gap: 15px;
+    }
+
+    .contact-link {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
     }
 }
 
