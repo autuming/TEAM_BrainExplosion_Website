@@ -589,7 +589,7 @@ footer {
         flex-direction: column;
     }
 
-    .hero-content p {
+    .gallery-hero p {
         font-size: 0.8rem;    /* 글자 크기를 살짝 줄여 한 줄에 들어가도록 조정 */
         padding: 0 2%;       /* 좌우 여백을 줄여 가로 공간을 확보 */
         margin-bottom: 25px;
