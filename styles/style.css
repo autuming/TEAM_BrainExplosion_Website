@@ -177,20 +177,27 @@ logo {
     text-shadow: 0 0 50px rgba(249, 122, 0, 0.5);
     animation: gradient-shift 4s ease-in-out infinite, pulse 3s ease-in-out infinite;
     position: relative;
+    /* 추가: 글자가 부모 요소 밖으로 나가지 않도록 보정 */
+    display: inline-block; 
 }
 
 .hero-content h1::before {
     content: 'BRAIN EXPLOSION';
     position: absolute;
+    /* 수정: 왼쪽 기준이 아닌 중앙 정렬을 위해 50% 설정 */
     top: 0;
-    left: 0;
+    left: 50%;
+    transform: translate(-50%, 0); /* 중앙 배치 유지 */
+    width: 100%;
     background: linear-gradient(45deg, #F97A00, #00ffff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     z-index: -1;
-    transform: translate(3px, 3px);
     opacity: 0.3;
+    /* 만약 여전히 입체감을 주고 싶다면 아래처럼 미세하게 조정 */
+    margin-left: 2px; 
+    margin-top: 2px;
 }
 
 @keyframes gradient-shift {
