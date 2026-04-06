@@ -589,6 +589,14 @@ footer {
         flex-direction: column;
     }
 
+    .hero-content p {
+        font-size: 0.9rem;    /* 글자 크기를 살짝 줄여 한 줄에 들어가도록 조정 */
+        padding: 0 2%;       /* 좌우 여백을 줄여 가로 공간을 확보 */
+        margin-bottom: 25px;
+        white-space: nowrap;  /* 줄바꿈을 절대 하지 않고 한 줄로 표시 */
+        letter-spacing: -0.5px; /* 자간을 미세하게 좁혀 가로 폭 최적화 */
+    }
+
     .filter-btn {
         padding: 0.8rem 1.5rem;
         font-size: 0.9rem;
