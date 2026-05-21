@@ -563,6 +563,22 @@ footer {
         white-space: nowrap; /* 글자가 잘리거나 줄바꿈되지 않도록 설정 */
     }
 
+    .gallery-item-info p,
+    .gallery-item-tag {
+        display: none !important;
+    }
+
+    /* [추가] 텍스트 여백을 줄여 카드 크기 최적화 */
+    .gallery-item-info {
+        padding: 0.8rem;
+        text-align: center; /* 제목을 가운데 정렬하면 더 깔끔합니다 */
+    }
+
+    .gallery-item-info h3 {
+        font-size: 0.95rem; /* 모바일 화면에 맞게 제목 크기 축소 */
+        margin-bottom: 0;
+    }
+
     /* 히어로 섹션 및 기타 요소 조절 */
     .gallery-hero {
         padding: 6rem 1rem 3rem 1rem;
