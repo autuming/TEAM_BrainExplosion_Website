@@ -17,11 +17,10 @@
     <meta property="og:description" content="게임 개발팀 Brain Explosion입니다.">
     <meta property="og:url" content="https://autuming.github.io/TeamCossassin_Website/">
     <meta property="og:type" content="website">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-    
+
+
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
@@ -54,70 +53,65 @@
         </div>
     </section>
 
-    <!-- 게임 섹션 -->
+    <!-- 게임 섹션 : 호버 확장 카드 -->
     <section class="section" id="game">
         <h2 class="section-title fade-in">Our games</h2>
-        <div class="game-container fade-in">
-            <div class="game-title">
-                <img src="img/title.png" alt="NOSTALGIA Game Logo" class="game-logo">
-            </div>
-            
-            <div class="game-slider">
-                <button class="slider-btn prev-btn" id="prevBtn">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                
-                <div class="slider-wrapper">
-                    <div class="game-video-container active">
-                        <div class="video-wrapper">
-                            <video autoplay loop muted playsinline poster="img/video-thumbnail-1.jpg">
-                                <source src="videos/short/11.mp4" type="video/mp4">
-                                동영상을 지원하지 않는 브라우저입니다.
-                            </video>
-                        </div>
-                        <div class="video-description">
-                            <h3>게임 디테일</h3>
-                            <p>전투씬을 디테일하게 보여줍니다.</p>
-                        </div>
+
+        <!-- 게임이 늘어나면 .game-card 를 복제해서 추가 -->
+        <div class="game-list fade-in">
+
+            <!-- ▼ 게임 카드 1 : NOSTALGIA -->
+            <article class="game-card" tabindex="0" aria-label="NOSTALGIA 자세히 보기">
+                <!-- 대표사진-->
+                <div class="game-card__art" aria-hidden="true">
+                    <img src="img/13.jpg" alt=""
+                         onerror="this.src='https://via.placeholder.com/900x600/1a1a1a/f97a00?text=NOSTALGIA'">
+                </div>
+
+                <!-- 텍스트 영역 (좌측) -->
+                <div class="game-card__content">
+                    <div class="game-card__head">
+                        <img src="img/title.png" alt="NOSTALGIA" class="game-card__logo">
+                        <span class="game-card__genre">액션 &middot; 코딩 퍼즐</span>
                     </div>
-                    
-                    <div class="game-video-container">
-                        <div class="video-wrapper">
-                            <video autoplay loop muted playsinline poster="img/video-thumbnail-2.jpg">
-                                <source src="videos/short/22.mp4" type="video/mp4">
-                                동영상을 지원하지 않는 브라우저입니다.
-                            </video>
-                        </div>
-                        <div class="video-description">
-                            <h3>코딩 게임</h3>
-                            <p>NOSTALGIA는 블록 코딩을 통해 전투를 설계하고, 스테이지 내의 적들을 처치하며 나아가는 액션 코딩 퍼즐 게임입니다. </p>
-                        </div>
-                    </div>
-                    
-                    <div class="game-video-container">
-                        <div class="video-wrapper">
-                            <video autoplay loop muted playsinline poster="img/video-thumbnail-3.jpg">
-                                <source src="videos/short/44.mp4" type="video/mp4">
-                                동영상을 지원하지 않는 브라우저입니다.
-                            </video>
-                        </div>
-                        <div class="video-description">
-                            <h3>전투 시스템</h3>
-                            <p>역동적인 액션과 전략적 요소가 결합된 전투 시스템을 경험해보세요. 다양한 무기와 스킬을 조합하여 적들을 물리치세요.</p>
-                        </div>
+
+                    <div class="game-card__detail">
+                        <p class="game-card__desc">
+                            블록 코딩으로 전투를 설계하고, 스테이지의 적을 처치하며 나아가는 액션 코딩 퍼즐 게임입니다.
+                            무기와 스킬을 조합해 나만의 전투 루틴을 완성하세요.
+                        </p>
+                        <ul class="game-card__tags">
+                            <li>...</li>
+                            <li>PC</li>
+                            <li>싱글 플레이</li>
+                        </ul>
+                        <a href="gallery.html" class="game-card__link">
+                            스크린샷 보기 <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
-                
-                <button class="slider-btn next-btn" id="nextBtn">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-            
-            <div class="slider-indicators">
-                <span class="indicator active" data-index="0"></span>
-                <span class="indicator" data-index="1"></span>
-                <span class="indicator" data-index="2"></span>
-            </div>
+
+                <span class="game-card__hint">커서를 올려 자세히 보기</span>
+            </article>
+
+            <!-- 게임 추가 시 아래 복사
+            <article class="game-card" tabindex="0" aria-label="게임명 자세히 보기">
+                <div class="game-card__art" aria-hidden="true"><img src="img/새일러스트.jpg" alt=""></div>
+                <div class="game-card__content">
+                    <div class="game-card__head">
+                        <img src="img/새로고.png" alt="게임명" class="game-card__logo">
+                        <span class="game-card__genre">장르</span>
+                    </div>
+                    <div class="game-card__detail">
+                        <p class="game-card__desc">한 줄 소개</p>
+                        <ul class="game-card__tags"><li>엔진</li><li>플랫폼</li></ul>
+                        <a href="#" class="game-card__link">스크린샷 보기 <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <span class="game-card__hint">커서를 올려 자세히 보기</span>
+            </article>
+            -->
+
         </div>
     </section>
 
@@ -127,7 +121,7 @@
             <h2 style="font-size: 2.5rem; color: #f97a00; text-shadow: 0 0 20px rgba(249, 122, 0, 0.4); letter-spacing: 0.1rem;">GALLERY</h2>
             <p style="color: #ccc; margin-top: 0.5rem;">팀의 활동과 작업 과정을 담은 갤러리입니다</p>
         </div>
-        
+
         <div class="preview-grid">
             <div class="preview-item">
                 <div class="img-box">
@@ -154,7 +148,7 @@
                     <img src="img/7_2.jpg" alt="닉토디자인" onerror="this.src='https://via.placeholder.com/350x240/1a1a1a/f97a00?text=Screenshot'">
                 </div>
                 <div class="preview-info">
-                    <h3>NNOSTALGIA - 닉토</h3>
+                    <h3>NOSTALGIA - 닉토</h3>
                     <p>NOSTALGIA 게임의 주인공 캐릭터 닉토의 디자인입니다.</p>
                 </div>
             </div>
@@ -211,7 +205,7 @@
         </div>
     </section>
 
-    
+
 
     <!-- 연락 섹션 -->
     <section class="section" id="contact">
@@ -256,88 +250,14 @@
             }
         }
 
-        // 게임 슬라이더
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.game-video-container');
-        const indicators = document.querySelectorAll('.indicator');
-        const totalSlides = slides.length;
-
-        function showSlide(index) {
-            // 모든 비디오 일시정지
-            slides.forEach(slide => {
-                const video = slide.querySelector('video');
-                if (video) {
-                    video.pause();
-                }
-            });
-
-            // 현재 슬라이드 표시
-            slides.forEach((slide, i) => {
-                slide.classList.remove('active');
-                if (i === index) {
-                    slide.classList.add('active');
-                    // 현재 슬라이드의 비디오 자동 재생
-                    const video = slide.querySelector('video');
-                    if (video) {
-                        video.currentTime = 0; // 처음부터 재생
-                        video.play().catch(err => {
-                            console.log('자동 재생 실패:', err);
-                        });
-                    }
-                }
-            });
-
-            // 인디케이터 업데이트
-            indicators.forEach((indicator, i) => {
-                indicator.classList.remove('active');
-                if (i === index) {
-                    indicator.classList.add('active');
-                }
-            });
-
-            currentSlide = index;
-        }
-
-        // 다음 슬라이드
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            showSlide(currentSlide);
-        }
-
-        // 이전 슬라이드
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            showSlide(currentSlide);
-        }
-
-        // 버튼 이벤트
-        document.getElementById('nextBtn').addEventListener('click', nextSlide);
-        document.getElementById('prevBtn').addEventListener('click', prevSlide);
-
-        // 인디케이터 클릭
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => {
-                showSlide(index);
-            });
-        });
-
-        // 키보드 네비게이션
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') {
-                prevSlide();
-            } else if (e.key === 'ArrowRight') {
-                nextSlide();
-            }
-        });
-
         // 스크롤 애니메이션
         function handleScrollAnimations() {
             const elements = document.querySelectorAll('.fade-in');
-            
+
             elements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
                 const elementVisible = 150;
-                
+
                 if (elementTop < window.innerHeight - elementVisible) {
                     element.classList.add('visible');
                 }
@@ -366,7 +286,7 @@
             } else {
                 nav.style.background = 'rgba(10, 10, 10, 0.9)';
             }
-            
+
             handleScrollAnimations();
         });
 
@@ -374,14 +294,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             createParticles();
             handleScrollAnimations();
-            
-            // 첫 번째 영상 자동 재생
-            const firstVideo = document.querySelector('.game-video-container.active video');
-            if (firstVideo) {
-                firstVideo.play().catch(err => {
-                    console.log('자동 재생 실패:', err);
-                });
-            }
         });
 
         // 마우스 따라다니는 효과
@@ -397,9 +309,9 @@
             cursor.style.pointerEvents = 'none';
             cursor.style.zIndex = '9999';
             cursor.style.animation = 'fade-out 1s ease-out forwards';
-            
+
             document.body.appendChild(cursor);
-            
+
             setTimeout(() => {
                 cursor.remove();
             }, 1000);
