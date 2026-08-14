@@ -563,6 +563,7 @@ footer {
         white-space: nowrap; /* 글자가 잘리거나 줄바꿈되지 않도록 설정 */
     }
 
+    /* [추가] 모바일에서 설명글과 태그 숨기기 */
     .gallery-item-info p,
     .gallery-item-tag {
         display: none !important;
@@ -571,7 +572,7 @@ footer {
     /* [추가] 텍스트 여백을 줄여 카드 크기 최적화 */
     .gallery-item-info {
         padding: 0.8rem;
-        text-align: center; /* 제목을 가운데 정렬하면 더 깔끔합니다 */
+        text-align: center; 
     }
 
     .gallery-item-info h3 {
