@@ -76,46 +76,16 @@ nav {
 }
 
 .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        
-        
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .logo-img {
-            height: 50px;
-            width: auto;
+    height: 50px;
+    width: auto;
 }
 
-
-
-/*.
-logo {
-    font-size: 28px;
-    font-weight: 800;
-    background: linear-gradient(45deg, #F97A00, #00ffff, #ffff00);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 0 0 30px rgba(249, 122, 0, 0.8);
-    position: relative;
-}
-
-.logo::after {
-    content: 'BRAIN EXPLOSION';
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: linear-gradient(45deg, #F97A00, #00ffff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    z-index: -1;
-    transform: translate(2px, 2px);
-    opacity: 0.3;
-}
-*/
 .nav-links {
     display: flex;
     gap: 40px;
@@ -177,17 +147,15 @@ logo {
     text-shadow: 0 0 50px rgba(249, 122, 0, 0.5);
     animation: gradient-shift 4s ease-in-out infinite, pulse 3s ease-in-out infinite;
     position: relative;
-    /* 추가: 글자가 부모 요소 밖으로 나가지 않도록 보정 */
     display: inline-block; 
 }
 
 .hero-content h1::before {
     content: 'BRAIN EXPLOSION';
     position: absolute;
-    /* 수정: 왼쪽 기준이 아닌 중앙 정렬을 위해 50% 설정 */
     top: 0;
     left: 50%;
-    transform: translate(-50%, 0); /* 중앙 배치 유지 */
+    transform: translate(-50%, 0);
     width: 100%;
     background: linear-gradient(45deg, #F97A00, #00ffff);
     -webkit-background-clip: text;
@@ -195,7 +163,6 @@ logo {
     background-clip: text;
     z-index: -1;
     opacity: 0.3;
-    /* 만약 여전히 입체감을 주고 싶다면 아래처럼 미세하게 조정 */
     margin-left: 2px; 
     margin-top: 2px;
 }
@@ -285,381 +252,368 @@ logo {
     position: relative;
 }
 
-/* 게임 섹션 */
-.game-container {
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(20px);
-    border: 2px solid rgba(249, 122, 0, 0.3);
-    padding: 40px 50px;
-    position: relative;
-    overflow: hidden;
-    clip-path: polygon(40px 0%, 100% 0%, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0% 100%, 0% 40px);
+/* =========================================================
+   게임 섹션 — 호버 확장 카드
+   (기존 슬라이더 / 영상 컨테이너 스타일은 전부 제거됨)
+   ========================================================= */
+
+/* 카드가 세로로 쌓이는 리스트. 게임이 늘어나면 카드만 추가하면 됨 */
+.game-list {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
     margin-top: 40px;
 }
 
-.game-container::before {
+.game-card {
+    /* 카드 높이는 변수로 관리 → 게임별로 인라인 스타일로 덮어쓰기 가능 */
+    --card-collapsed: 340px;
+    --card-expanded: 860px;
+
+    position: relative;
+    height: var(--card-collapsed);
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(249, 122, 0, 0.3);
+    clip-path: polygon(40px 0%, 100% 0%, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0% 100%, 0% 40px);
+    cursor: pointer;
+    outline: none;
+    transition: height 0.6s cubic-bezier(0.22, 0.61, 0.36, 1),
+                border-color 0.4s ease,
+                box-shadow 0.4s ease;
+}
+
+/* 상단 네온 라인 */
+.game-card::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     height: 4px;
+    z-index: 4;
     background: linear-gradient(90deg, #F97A00, #00ffff, #ffff00);
     box-shadow: 0 0 20px rgba(249, 122, 0, 0.8);
+    transform: scaleX(0.2);
+    transform-origin: left center;
+    transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-.game-title {
-    font-size: 3rem;
-    font-weight: 900;
-    text-align: center;
-    margin-bottom: 30px;
+/* ── 확장 상태 ── */
+.game-card:hover,
+.game-card:focus-visible,
+.game-card:focus-within {
+    height: var(--card-expanded);
+    border-color: rgba(249, 122, 0, 0.85);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6),
+                0 0 45px rgba(249, 122, 0, 0.25);
+}
+
+.game-card:hover::before,
+.game-card:focus-visible::before,
+.game-card:focus-within::before {
+    transform: scaleX(1);
+}
+
+/* ── 대표 일러스트 (우측) ── */
+.game-card__art {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 62%;
+    z-index: 1;
+    opacity: 0;
+    transform: translateX(60px) scale(1.06);
+    transition: opacity 0.55s ease, transform 0.85s cubic-bezier(0.22, 0.61, 0.36, 1);
+    /* 왼쪽으로 갈수록 서서히 사라지는 그라데이션 마스크 */
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.4) 24%, #000 62%);
+    mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.4) 24%, #000 62%);
+}
+
+.game-card__art img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+}
+
+/* 일러스트 위에 얹는 컬러 그라데이션 (배경과 자연스럽게 섞이도록) */
+.game-card__art::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(5, 5, 10, 0.95) 0%, rgba(5, 5, 10, 0.35) 32%, transparent 62%),
+        linear-gradient(200deg, rgba(249, 122, 0, 0.25) 0%, transparent 45%, rgba(0, 255, 255, 0.18) 100%);
+}
+
+.game-card:hover .game-card__art,
+.game-card:focus-visible .game-card__art,
+.game-card:focus-within .game-card__art {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+}
+
+/* ── 텍스트 영역 (좌측) ── */
+.game-card__content {
     position: relative;
-    padding-left: 0;
-    display: flex;  
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    padding: 0 55px;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    gap: 26px;
+    transition: width 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-.game-logo {
-    max-width: 300px;
+/* 호버 시 텍스트는 좌측 절반으로, 우측은 일러스트 자리 */
+.game-card:hover .game-card__content,
+.game-card:focus-visible .game-card__content,
+.game-card:focus-within .game-card__content {
+    width: 52%;
+}
+
+/* 로고 블록: 평소엔 카드 가운데, 호버하면 왼쪽으로 미끄러짐 */
+.game-card__head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    transition: margin-left 0.6s cubic-bezier(0.22, 0.61, 0.36, 1),
+                transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.game-card:hover .game-card__head,
+.game-card:focus-visible .game-card__head,
+.game-card:focus-within .game-card__head {
+    margin-left: 0;
+    transform: translateX(0);
+}
+
+.game-card__logo {
+    max-width: 460px;
     width: 100%;
     height: auto;
     filter: drop-shadow(0 0 20px rgba(249, 122, 0, 0.6));
-    transition: all 0.3s ease;
+    transition: filter 0.4s ease, transform 0.5s ease;
 }
 
-.game-logo:hover {
-    filter: drop-shadow(0 0 30px rgba(249, 122, 0, 0.9));
-    transform: scale(1.05);
+.game-card:hover .game-card__logo,
+.game-card:focus-visible .game-card__logo,
+.game-card:focus-within .game-card__logo {
+    filter: drop-shadow(0 0 32px rgba(249, 122, 0, 0.95));
+    transform: translateY(-2px);
 }
 
-/* 반응형 */
-@media (max-width: 1024px) {
-    .game-title {
-        text-align: center;
-    }
-    
-    .game-logo {
-        max-width: 400px;
-    }
-}
-
-@media (max-width: 768px) {
-    .game-logo {
-        max-width: 300px;
-    }
-}
-
-/*.game-title {
-    font-size: 3rem;
-    font-weight: 900;
-    text-align: left;
-    margin-bottom: 50px;
-    background: linear-gradient(45deg, #F97A00, #ffffff, #00ffff, #ffff00);
-    background-size: 400% 400%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 0 0 40px rgba(249, 122, 0, 0.6);
-    animation: gradient-shift 6s ease-in-out infinite;
-    position: relative;
-    letter-spacing: 4px;
+.game-card__genre {
+    font-size: 1rem;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    padding-left: 0;
+    font-weight: 600;
+    color: #ffff00;
+    padding: 9px 22px;
+    border: 1px solid rgba(255, 255, 0, 0.5);
+    background: linear-gradient(45deg, rgba(249, 122, 0, 0.2), rgba(0, 255, 255, 0.2));
 }
 
-.game-title::before {
-    content: '#1. NOSTALGIA';
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: linear-gradient(45deg, #F97A00, #00ffff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    z-index: -1;
-    transform: translate(3px, 3px);
-    opacity: 0.4;
-}*/
-
-/* 슬라이더 */
-.game-slider {
-    position: relative;
-    width: 100%;
-    min-height: 450px;
-    display: flex;
-    align-items: center;
-}
-
-.slider-wrapper {
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-}
-
-.game-video-container {
-    display: none;
-    align-items: center;
-    gap: 50px;
-    background: transparent;
-    backdrop-filter: none;
-    border: none;
-    padding: 30px;
-    position: relative;
-    overflow: visible;
-    clip-path: none;
-    transition: all 0.3s ease;
+/* 호버 시에만 펼쳐지는 상세 정보 */
+.game-card__detail {
+    max-height: 0;
     opacity: 0;
-    transform: translateX(100px);
+    overflow: hidden;
+    transform: translateY(20px);
+    transition: max-height 0.6s cubic-bezier(0.22, 0.61, 0.36, 1),
+                opacity 0.45s ease 0.12s,
+                transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-.game-video-container.active {
-    display: flex;
+.game-card:hover .game-card__detail,
+.game-card:focus-visible .game-card__detail,
+.game-card:focus-within .game-card__detail {
+    max-height: 460px;
     opacity: 1;
-    transform: translateX(0);
-    animation: slideIn 0.5s ease-out;
+    transform: translateY(0);
 }
 
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateX(100px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+.game-card__desc {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: #ffffff;
+    opacity: 0.9;
+    word-break: keep-all;
 }
 
-/* 슬라이더 버튼 */
-.slider-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(249, 122, 0, 0.3);
-    border: 2px solid rgba(249, 122, 0, 0.5);
-    color: #fff;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 10;
-    transition: all 0.3s ease;
+.game-card__tags {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.3rem;
-    box-shadow: 0 0 15px rgba(249, 122, 0, 0.3);
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    margin-top: 24px;
 }
 
-.slider-btn:hover {
-    background: rgba(249, 122, 0, 0.6);
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 0 25px rgba(249, 122, 0, 0.5);
+.game-card__tags li {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    color: #00ffff;
+    padding: 5px 12px;
+    border: 1px solid rgba(0, 255, 255, 0.35);
+    background: rgba(0, 255, 255, 0.06);
 }
 
-.slider-btn:active {
-    transform: translateY(-50%) scale(0.95);
-}
-
-.prev-btn {
-    left: -30px;
-}
-
-.next-btn {
-    right: -30px;
-}
-
-/* 인디케이터 */
-.slider-indicators {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 30px;
-}
-
-.indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(249, 122, 0, 0.3);
-    border: 2px solid rgba(249, 122, 0, 0.5);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.indicator:hover {
-    background: rgba(249, 122, 0, 0.6);
-    transform: scale(1.2);
-}
-
-.indicator.active {
-    background: rgba(249, 122, 0, 1);
-    box-shadow: 0 0 15px rgba(249, 122, 0, 0.8);
-    transform: scale(1.3);
-}
-
-.video-wrapper {
-    flex: 2;
-    max-width: 700px;
-}
-
-.video-wrapper video {
-    width: 100%;
-    height: auto;
-    min-height: 350px;
-    border-radius: 15px;
-    box-shadow: 
-        0 15px 40px rgba(0, 0, 0, 0.7),
-        0 0 20px rgba(249, 122, 0, 0.3);
-    transition: all 0.3s ease;
-}
-
-.video-wrapper video:hover {
-    box-shadow: 
-        0 20px 50px rgba(0, 0, 0, 0.8),
-        0 0 30px rgba(249, 122, 0, 0.5);
-    transform: scale(1.02);
-}
-
-.video-description {
-    flex: 1;
-    padding-left: 30px;
-    min-width: 300px;
-}
-
-.video-description h3 {
-    font-size: 2rem;
-    font-weight: 700;
+.game-card__link {
+    display: inline-block;
+    margin-top: 22px;
     color: #F97A00;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.game-card__link i {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.game-card__link:hover {
+    color: #ffff00;
     text-shadow: 0 0 15px rgba(249, 122, 0, 0.8);
 }
 
-.video-description p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #ffffff;
-    opacity: 0.9;
+.game-card__link:hover i {
+    transform: translateX(5px);
 }
 
-/* 반응형 - 게임 섹션 */
+/* 평소에만 보이는 안내 문구 */
+.game-card__hint {
+    position: absolute;
+    right: 50px;
+    bottom: 42px;
+    z-index: 3;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.45);
+    white-space: nowrap;
+    transition: opacity 0.3s ease, transform 0.4s ease;
+}
+
+.game-card:hover .game-card__hint,
+.game-card:focus-visible .game-card__hint,
+.game-card:focus-within .game-card__hint {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+/* 키보드 포커스 표시 */
+.game-card:focus-visible {
+    border-color: #00ffff;
+    box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.35),
+                0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+/* 게임 섹션 반응형 */
 @media (max-width: 1024px) {
-    .game-container {
-        padding: 50px 30px;
+    .game-card {
+        --card-collapsed: 280px;
+        --card-expanded: 720px;
     }
 
-    .game-title {
-        font-size: 2.5rem;
-        text-align: center;
+    .game-card:hover .game-card__content,
+    .game-card:focus-visible .game-card__content,
+    .game-card:focus-within .game-card__content {
+        width: 60%;
     }
 
-    .game-slider {
-        min-height: 500px;
+    .game-card__content {
+        padding: 0 35px;
+        gap: 24px;
     }
 
-    .slider-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 1.2rem;
+    .game-card__logo {
+        max-width: 340px;
     }
 
-    .prev-btn {
-        left: -20px;
-    }
-
-    .next-btn {
-        right: -20px;
-    }
-
-    .game-video-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 30px;
-        padding: 40px 30px;
-    }
-    
-    .video-wrapper {
-        max-width: 100%;
-        flex: none;
-    }
-    
-    .video-wrapper video {
-        min-height: 300px;
-    }
-    
-    .video-description {
-        padding-left: 0;
-        min-width: auto;
-    }
-    
-    .video-description h3 {
-        font-size: 2rem;
-    }
-    
-    .video-description p {
-        font-size: 1.1rem;
+    .game-card__desc {
+        font-size: 1rem;
     }
 }
 
-@media (max-width: 768px) {
-    .game-container {
-        padding: 40px 20px;
+/* 터치 기기: 호버가 없으므로 항상 펼쳐진 상태로 표시 */
+@media (hover: none), (max-width: 768px) {
+    .game-card {
+        height: auto;
+        cursor: default;
         clip-path: polygon(20px 0%, 100% 0%, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0% 100%, 0% 20px);
     }
 
-    .game-slider {
-        min-height: 450px;
+    .game-card::before {
+        transform: scaleX(1);
     }
 
-    .slider-btn {
-        width: 45px;
-        height: 45px;
-        font-size: 1rem;
+    .game-card__art {
+        width: 100%;
+        opacity: 0.28;
+        transform: none;
+        -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.6) 35%, #000 100%);
+        mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.6) 35%, #000 100%);
     }
 
-    .prev-btn {
-        left: -15px;
+    .game-card__art::after {
+        background: linear-gradient(180deg, rgba(5, 5, 10, 0.9) 0%, rgba(5, 5, 10, 0.6) 100%);
     }
 
-    .next-btn {
-        right: -15px;
+    .game-card__content,
+    .game-card:hover .game-card__content,
+    .game-card:focus-within .game-card__content {
+        width: 100%;
+        padding: 45px 25px;
+        gap: 22px;
     }
 
-    .game-title {
-        font-size: 2rem;
-        letter-spacing: 2px;
-        margin-bottom: 40px;
-    }
-    
-    .game-video-container {
-        padding: 30px 20px;
-        gap: 25px;
-    }
-    
-    .video-wrapper video {
-        min-height: 250px;
-        border-radius: 10px;
-    }
-    
-    .video-description h3 {
-        font-size: 1.8rem;
-    }
-    
-    .video-description p {
-        font-size: 1rem;
+    .game-card__head,
+    .game-card:hover .game-card__head,
+    .game-card:focus-within .game-card__head {
+        margin-left: 0;
+        transform: none;
     }
 
-    .slider-indicators {
-        margin-top: 30px;
-        gap: 10px;
+    .game-card__logo {
+        max-width: 260px;
     }
 
-    .indicator {
-        width: 10px;
-        height: 10px;
+    .game-card__detail {
+        max-height: none;
+        opacity: 1;
+        transform: none;
+    }
+
+    .game-card__desc {
+        font-size: 0.95rem;
+    }
+
+    .game-card__hint {
+        display: none;
+    }
+}
+
+/* 모션 최소화 설정 존중 */
+@media (prefers-reduced-motion: reduce) {
+    .game-card,
+    .game-card::before,
+    .game-card__art,
+    .game-card__content,
+    .game-card__head,
+    .game-card__detail,
+    .game-card__logo,
+    .game-card__hint {
+        transition-duration: 0.01ms !important;
     }
 }
 
@@ -718,7 +672,6 @@ logo {
     font-weight: 700;
     margin-bottom: 10px;
     color: #F97A00;
-    /*text-transform: uppercase;*/
     letter-spacing: 1px;
     text-shadow: 0 0 10px rgba(249, 122, 0, 0.8);
 }
@@ -802,32 +755,32 @@ footer {
     }
 
     .logo-img {
-        height: 32px; /* 로고 크기 줄임 */
+        height: 32px;
     }
 
     .nav-links {
-        display: flex; /* 숨김 해제 */
-        gap: 12px;     /* 메뉴 간격 좁게 */
+        display: flex;
+        gap: 12px;
     }
 
     .nav-links a {
-        font-size: 13px;    /* 글자 크기 줄임 */
+        font-size: 13px;
         padding: 5px 0;
-        white-space: nowrap; /* 줄바꿈 방지 */
+        white-space: nowrap;
     }
 
-    /* 히어로 섹션: 글자 크기 줄여서 깔끔하게 */
+    /* 히어로 섹션 */
     .hero-content h1 {
         font-size: 2.2rem;
         word-break: keep-all;
     }
 
     .hero-content p {
-        font-size: 0.7rem;    /* 글자 크기를 살짝 줄여 한 줄에 들어가도록 조정 */
-        padding: 0 2%;       /* 좌우 여백을 줄여 가로 공간을 확보 */
+        font-size: 0.7rem;
+        padding: 0 2%;
         margin-bottom: 25px;
-        white-space: nowrap;  /* 줄바꿈을 하지 않고 한 줄로 표시 */
-        letter-spacing: -0.5px; /* 자간을 미세하게 좁혀 가로 폭 최적화 */
+        white-space: nowrap;
+        letter-spacing: -0.5px;
     }
 
     .cta-button {
@@ -835,13 +788,11 @@ footer {
         font-size: 0.9rem;
     }
 
-    /* 섹션 타이틀 정리 */
     .section-title {
         font-size: 1.8rem;
         margin-bottom: 40px;
     }
 
-    /* 연락처: 모바일에서는 세로가 더 깔끔함 */
     .contact-links {
         flex-direction: column;
         gap: 15px;
@@ -910,7 +861,7 @@ footer {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top; /* 캐릭터 얼굴이 잘 보이지 않던 문제 해결을 위해 상단 정렬 유지 */
+    object-position: top;
     transition: transform 0.4s ease;
 }
 
@@ -973,8 +924,7 @@ footer {
     .gallery-preview-section {
         padding: 3rem 3%;
     }
-    
-    /* 모바일에서는 가로폭 확보를 위해 1열 혹은 2열 배치 (여기서는 깔끔하게 1열 배치로 추천합니다) */
+
     .preview-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
