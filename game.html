@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- 탭 아이콘 -->
+    <link rel="icon" type="image/png" href="img/sa.png">
+
+    <title>NOSTALGIA - Brain Explosion</title>
+
+    <!-- 메타 태그 -->
+    <meta name="description" content="Brain Explosion의 액션 코딩 퍼즐 게임 NOSTALGIA. 게임 소개와 시연 영상, 스크린샷을 만나보세요.">
+    <meta name="keywords" content="NOSTALGIA, 노스탤지아, 인디 게임, 코딩 게임, 블록 코딩, 액션 퍼즐, Brain Explosion, 닉토">
+    <meta property="og:title" content="NOSTALGIA - Brain Explosion">
+    <meta property="og:description" content="블록 코딩으로 전투를 설계하는 액션 코딩 퍼즐 게임 NOSTALGIA.">
+    <meta property="og:url" content="https://autuming.github.io/TeamCossassin_Website/game.html">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/game.css">
+</head>
+<body class="game-page">
+
+    <!-- 웰컴 인트로 오버레이 (로드 시 잠깐 떴다가 사라짐) -->
+    <div class="intro-overlay" id="introOverlay">
+        <div class="intro-inner">
+            <img src="img/title.png" alt="NOSTALGIA"
+                 onerror="this.style.display='none'">
+            <span class="intro-sub">NOW LOADING</span>
+        </div>
+    </div>
+
+    <!-- 파티클 배경 -->
+    <div class="particles" id="particles"></div>
+
+    <!-- 네비게이션 -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo-container">
+                <a href="index.html" aria-label="홈으로">
+                    <img src="img/logo.png" alt="Brain Explosion Logo" class="logo-img">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#game">Games</a></li>
+                <li><a href="index.html#team">Team</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===================== 웰컴 히어로 ===================== -->
+    <header class="game-hero" id="top">
+        <!-- 배경 키비주얼 -->
+        <div class="game-hero__bg" aria-hidden="true">
+            <img src="img/13.jpg" alt=""
+                 onerror="this.src='https://via.placeholder.com/1600x900/0a0a0a/f97a00?text=NOSTALGIA'">
+        </div>
+
+        <div class="game-hero__content">
+            <span class="game-hero__eyebrow">Brain Explosion · Game #1</span>
+            <img src="img/title.png" alt="NOSTALGIA" class="game-hero__logo"
+                 onerror="this.outerHTML='<h1 class=&quot;game-hero__fallback&quot;>NOSTALGIA</h1>'">
+            <p class="game-hero__tagline">블록으로 설계하고, 액션으로 증명하라.</p>
+
+            <ul class="game-hero__meta">
+                <li><i class="fas fa-gamepad"></i> 액션 코딩 퍼즐</li>
+                <li><i class="fas fa-desktop"></i> PC</li>
+                <li><i class="fas fa-user"></i> 싱글 플레이</li>
+                <li><i class="fab fa-unity"></i> Unity</li>
+            </ul>
+
+            <div class="game-hero__actions">
+                <a href="#trailer" class="cta-button">
+                    <i class="fas fa-play"></i> 시연 영상 보기
+                </a>
+                <a href="#about" class="ghost-button">게임 소개</a>
+            </div>
+        </div>
+
+        <!-- 스크롤 안내 -->
+        <a href="#about" class="scroll-cue" aria-label="아래로 스크롤">
+            <span></span>
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </header>
+
+    <!-- ===================== 게임 소개 ===================== -->
+    <section class="section game-section" id="about">
+        <h2 class="section-title fade-in">About the Game</h2>
+
+        <div class="about-grid fade-in">
+            <div class="about-text">
+                <p class="about-lead">
+                    <strong>NOSTALGIA</strong>는 블록 코딩으로 전투를 설계하고,
+                    스테이지의 적을 하나씩 처치하며 나아가는 <em>액션 코딩 퍼즐 게임</em>입니다.
+                </p>
+                <p>
+                    플레이어는 명령 블록을 조립해 캐릭터 <strong>닉토</strong>의 움직임과 공격을
+                    직접 프로그래밍합니다. 단순히 버튼을 누르는 액션이 아니라,
+                    적의 배치와 패턴을 읽고 가장 효율적인 전투 루틴을 &lsquo;코딩&rsquo;하는 것이 핵심입니다.
+                </p>
+                <p>
+                    무기와 스킬을 조합해 나만의 전략을 완성하고, 점점 복잡해지는 스테이지를
+                    돌파해 보세요. 생각하는 만큼 강해지는 게임입니다.
+                </p>
+
+                <ul class="feature-list">
+                    <li><i class="fas fa-cube"></i> 직관적인 블록 코딩 전투 설계</li>
+                    <li><i class="fas fa-bolt"></i> 역동적인 실시간 액션</li>
+                    <li><i class="fas fa-puzzle-piece"></i> 스테이지마다 깊어지는 퍼즐</li>
+                    <li><i class="fas fa-gears"></i> 무기 &middot; 스킬 조합 커스터마이징</li>
+                </ul>
+            </div>
+
+            <aside class="about-card">
+                <h3>게임 정보</h3>
+                <dl>
+                    <dt>장르</dt><dd>액션 코딩 퍼즐</dd>
+                    <dt>플랫폼</dt><dd>PC</dd>
+                    <dt>플레이</dt><dd>싱글 플레이</dd>
+                    <dt>엔진</dt><dd>Unity</dd>
+                    <dt>개발</dt><dd>Brain Explosion</dd>
+                </dl>
+                <a href="gallery.html" class="about-card__link">
+                    갤러리 전체보기 <i class="fas fa-arrow-right"></i>
+                </a>
+            </aside>
+        </div>
+    </section>
+
+    <!-- ===================== 시연 영상 ===================== -->
+    <section class="section game-section" id="trailer">
+        <h2 class="section-title fade-in">Gameplay Videos</h2>
+
+        <!-- 메인 대표 영상 -->
+        <div class="trailer-main fade-in">
+            <video id="mainVideo" controls autoplay loop muted playsinline
+                   poster="img/13.jpg">
+                <source src="videos/hhhhh.mp4" type="video/mp4">
+                동영상을 지원하지 않는 브라우저입니다.
+            </video>
+        </div>
+
+        <!-- 서브 영상 그리드 
+        <div class="video-grid fade-in">
+            <figure class="video-item">
+                <video controls loop muted playsinline poster="img/13.jpg">
+                    <source src="videos/short/22.mp4" type="video/mp4">
+                </video>
+                <figcaption>
+                    <h3>코딩 전투 시스템</h3>
+                    <p>mmmmmmmmmm</p>
+                </figcaption>
+            </figure>
+
+            <figure class="video-item">
+                <video controls loop muted playsinline poster="img/start.png">
+                    <source src="videos/short/44.mp4" type="video/mp4">
+                </video>
+                <figcaption>
+                    <h3>전투 디테일</h3>
+                    <p>역동적인 액션과 이펙트를 가까이서 확인하세요.</p>
+                </figcaption>
+            </figure>
+        </div> -->
+    </section>
+
+    <!-- ===================== 스크린샷 ===================== -->
+    <section class="section game-section" id="screenshots">
+        <h2 class="section-title fade-in">Screenshots</h2>
+
+        <div class="shot-grid fade-in">
+            <button class="shot" type="button" data-full="img/13.jpg">
+                <img src="img/13.jpg" alt="NOSTALGIA 오프닝 화면"
+                     onerror="this.src='https://via.placeholder.com/600x400/1a1a1a/f97a00?text=Opening'">
+                <span class="shot__cap">오프닝 화면</span>
+            </button>
+
+            <button class="shot" type="button" data-full="img/start.png">
+                <img src="img/start.png" alt="NOSTALGIA 게임 플레이 스크린샷"
+                     onerror="this.src='https://via.placeholder.com/600x400/1a1a1a/f97a00?text=Gameplay'">
+                <span class="shot__cap">게임 플레이</span>
+            </button>
+
+            <button class="shot" type="button" data-full="img/7_2.jpg">
+                <img src="img/7_2.jpg" alt="주인공 캐릭터 닉토 디자인"
+                     onerror="this.src='https://via.placeholder.com/600x400/1a1a1a/f97a00?text=Nykto'">
+                <span class="shot__cap">캐릭터 &middot; 닉토</span>
+            </button>
+        </div>
+
+        <div class="view-more-container">
+            <a href="gallery.html" class="view-more-btn">
+                더 많은 이미지 보기 <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- ===================== 하단 CTA ===================== -->
+    <section class="section game-section">
+        <div class="contact fade-in">
+            <h2 class="section-title">Follow NOSTALGIA</h2>
+            <p style="color:#ccc; margin-bottom: 10px;">개발 소식과 업데이트를 가장 먼저 만나보세요.</p>
+            <div class="contact-links">
+                <a href="https://www.youtube.com/@TeamBrainExplosion" class="contact-link">
+                    <i class="fab fa-youtube"></i>
+                    <span>YouTube</span>
+                </a>
+                <a href="https://www.instagram.com/team_brainexplosion/" class="contact-link">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="index.html#game" class="contact-link">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>메인으로</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+      &copy; 2025 Brain Explosion. All rights reserved.
+    </footer>
+
+    <!-- 스크린샷 라이트박스 -->
+    <div class="lightbox" id="lightbox" hidden>
+        <button class="lightbox__close" id="lightboxClose" aria-label="닫기">
+            <i class="fas fa-times"></i>
+        </button>
+        <img src="" alt="확대 이미지" id="lightboxImg">
+    </div>
+
+    <script>
+        // 웰컴 인트로 오버레이 제거
+        window.addEventListener('load', () => {
+            const overlay = document.getElementById('introOverlay');
+            if (overlay) {
+                setTimeout(() => overlay.classList.add('hide'), 1200);
+                setTimeout(() => overlay.remove(), 2200);
+            }
+        });
+
+        // 파티클 생성
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            if (!particlesContainer) return;
+            const particleCount = 50;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // 스크롤 등장 애니메이션
+        function handleScrollAnimations() {
+            document.querySelectorAll('.fade-in').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 120) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+
+        // 부드러운 스크롤 (페이지 내 앵커만)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // 네비게이션 배경 진하게
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            nav.style.background = window.scrollY > 100
+                ? 'rgba(10, 10, 10, 0.95)'
+                : 'rgba(10, 10, 10, 0.9)';
+            handleScrollAnimations();
+        });
+
+        // 스크린샷 라이트박스
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxClose = document.getElementById('lightboxClose');
+
+        document.querySelectorAll('.shot').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const img = btn.querySelector('img');
+                lightboxImg.src = btn.dataset.full || img.src;
+                lightboxImg.alt = img.alt;
+                lightbox.hidden = false;
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.hidden = true;
+            lightboxImg.src = '';
+            document.body.style.overflow = '';
+        }
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !lightbox.hidden) closeLightbox();
+        });
+
+        // 초기화
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            handleScrollAnimations();
+        });
+
+        // 커서 잔상 효과 (메인과 동일)
+        document.addEventListener('mousemove', (e) => {
+            const cursor = document.createElement('div');
+            cursor.style.cssText = `
+                position: fixed; left:${e.clientX}px; top:${e.clientY}px;
+                width:10px; height:10px; background:rgba(249,122,0,0.3);
+                border-radius:50%; pointer-events:none; z-index:9999;
+                animation: fade-out 1s ease-out forwards;`;
+            document.body.appendChild(cursor);
+            setTimeout(() => cursor.remove(), 1000);
+        });
+
+        const fadeStyle = document.createElement('style');
+        fadeStyle.textContent = `@keyframes fade-out {
+            0% { opacity:1; transform:scale(1); }
+            100% { opacity:0; transform:scale(2); } }`;
+        document.head.appendChild(fadeStyle);
+    </script>
+</body>
+</html>
