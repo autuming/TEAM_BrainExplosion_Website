@@ -271,8 +271,11 @@ nav {
     --card-expanded: 860px;
 
     position: relative;
+    display: block;
     height: var(--card-collapsed);
     overflow: hidden;
+    text-decoration: none;
+    color: inherit;
     background: rgba(0, 0, 0, 0.55);
     backdrop-filter: blur(20px);
     border: 2px solid rgba(249, 122, 0, 0.3);
@@ -382,7 +385,7 @@ nav {
 .game-card__head {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 14px;
     margin-left: 50%;
     transform: translateX(-50%);
@@ -487,7 +490,9 @@ nav {
     text-shadow: 0 0 15px rgba(249, 122, 0, 0.8);
 }
 
-.game-card__link:hover i {
+.game-card__link:hover i,
+.game-card:hover .game-card__link i,
+.game-card:focus-visible .game-card__link i {
     transform: translateX(5px);
 }
 
