@@ -57,14 +57,14 @@
     <section class="section" id="game">
         <h2 class="section-title fade-in">Our games</h2>
 
-        <!-- 게임이 늘어나면 .game-card 를 복제해서 추가 -->
+        <!-- 카드가 세로로 쌓이는 구조. 게임이 늘어나면 .game-card 를 복제해서 추가 -->
         <div class="game-list fade-in">
 
             <!-- ▼ 게임 카드 1 : NOSTALGIA -->
-            <article class="game-card" tabindex="0" aria-label="NOSTALGIA 자세히 보기">
-                <!-- 대표사진-->
+            <a href="game.html" class="game-card" aria-label="NOSTALGIA 게임 페이지로 이동">
+                <!-- 대표 일러스트 (호버 시 우측에서 등장) -->
                 <div class="game-card__art" aria-hidden="true">
-                    <img src="img/13.jpg" alt=""
+                    <img src="img/7_2.jpg" alt=""
                          onerror="this.src='https://via.placeholder.com/900x600/1a1a1a/f97a00?text=NOSTALGIA'">
                 </div>
 
@@ -81,21 +81,22 @@
                             무기와 스킬을 조합해 나만의 전투 루틴을 완성하세요.
                         </p>
                         <ul class="game-card__tags">
-                            <li>...</li>
+                            <li>Unity</li>
                             <li>PC</li>
                             <li>싱글 플레이</li>
                         </ul>
-                        <a href="gallery.html" class="game-card__link">
-                            스크린샷 보기 <i class="fas fa-arrow-right"></i>
-                        </a>
+                        <span class="game-card__link">
+                            게임 페이지 보기 <i class="fas fa-arrow-right"></i>
+                        </span>
                     </div>
                 </div>
 
-                <span class="game-card__hint">커서를 올려 자세히 보기</span>
-            </article>
+                <span class="game-card__hint">클릭해서 게임 페이지로</span>
+            </a>
+            <!-- ▲ 게임 카드 1 -->
 
-            <!-- 게임 추가 시 아래 복사
-            <article class="game-card" tabindex="0" aria-label="게임명 자세히 보기">
+            <!-- 게임 추가 시 아래 형태로 복제
+            <a href="game2.html" class="game-card" aria-label="게임명 게임 페이지로 이동">
                 <div class="game-card__art" aria-hidden="true"><img src="img/새일러스트.jpg" alt=""></div>
                 <div class="game-card__content">
                     <div class="game-card__head">
@@ -105,11 +106,11 @@
                     <div class="game-card__detail">
                         <p class="game-card__desc">한 줄 소개</p>
                         <ul class="game-card__tags"><li>엔진</li><li>플랫폼</li></ul>
-                        <a href="#" class="game-card__link">스크린샷 보기 <i class="fas fa-arrow-right"></i></a>
+                        <span class="game-card__link">게임 페이지 보기 <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </div>
-                <span class="game-card__hint">커서를 올려 자세히 보기</span>
-            </article>
+                <span class="game-card__hint">클릭해서 게임 페이지로</span>
+            </a>
             -->
 
         </div>
@@ -202,6 +203,12 @@
                 <p class="member-role">게임 아트</p>
                 <span class="member-game">Game Artist</span>
             </div>
+            <div class="member-card fade-in">
+                <h3 class="member-name">김세린</h3>
+                <p class="member-role">사운드 디자인 & 작곡</p>
+                <span class="member-game">Sound Designer</span>
+            </div>
+
         </div>
     </section>
 
