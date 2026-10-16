@@ -3,6 +3,49 @@
    game.html 은 style.css 뒤에 이 파일을 불러옴
 
 웰컴 인트로 오버레이 ── */
+
+/* Giants 웹폰트 정의 */
+@font-face {
+    font-family: 'Giants-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonnu-2010@1.0/Giants-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* S-Core Dream 웹폰트 정의 (다양한 굵기 지원) */
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonnu-2010@1.0/S-CoreDream-3Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream-5Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonnu-2010@1.0/S-CoreDream-5Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream-7Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonnu-2010@1.0/S-CoreDream-7Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* 기본 본문 폰트 설정 (가독성을 위한 에스코어드림 중심) */
+body, button, input, select, textarea {
+    font-family: 'S-CoreDream-5Medium', 'S-CoreDream-3Light', sans-serif;
+}
+
+/* 임팩트가 필요한 주요 제목 및 보스/포인트 요소에는 Giants 폰트 적용 */
+h1, h2, h3, .section-title, .game-hero__fallback, .about-card h3 {
+    font-family: 'Giants-Bold', 'S-CoreDream-7Bold', sans-serif;
+}
+
+/* 강조 문구 및 주요 본문 타이틀 */
+.about-lead, strong, b {
+    font-family: 'S-CoreDream-7Bold', sans-serif;
+}
 .intro-overlay {
     position: fixed;
     inset: 0;
@@ -158,7 +201,7 @@
 
 .game-hero__meta li {
     font-size: 0.95rem;
-    color: #ffff00;
+    color: #F97A00;
     display: flex;
     align-items: center;
     gap: 8px;
